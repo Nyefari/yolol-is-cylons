@@ -41,7 +41,7 @@ Syntax errors result in the _line_ (not statement) being parsed to be completely
 ## Semantics
 
  * The factorial operator (`!`) is guaranteed to be equal to the factorial function at nonnegative integers. Other inputs are either a runtime error if not supported, or may return a number using another function (Gamma, flooring, etc.).
- * The maximum value for a number is `922337203685477.5807` (MAX_VALUE) and the minimum value `-922337203685477.5808` (MIN_VALUE). Only four decimal digits of sub-integer precision are guaranteed.
+ * The maximum value for a number is `9223372036854775.807` (MAX_VALUE) and the minimum value `-9223372036854775.808` (MIN_VALUE). Only three decimal digits of sub-integer precision are guaranteed.
  * If a number overflows, it is set to MAX_VALUE.
  * If a number underflows, it is set to MIN_VALUE.
  * The maximum length for a string is guaranteed to be at least 2^16 (`65536`) chars.
@@ -53,8 +53,8 @@ Syntax errors result in the _line_ (not statement) being parsed to be completely
  * Automatic optimizations (constant folding, etc.) are allowed iff they don't change the overall behavior of the program, including acceptable domain and side effects.
  * Modulo operator (`%`) return sign is equal to the sign of the divisor.
  * Modulo operator (`%`) returns the sub-integer part, such as a floating point mod. Example: `2.3 % 2` is `0.3`.
- * The literals `True` and `False` are equal to `1` and `0` respectively. Logical operators (`==`, `and`, `not`, etc.) return either of these literals.
-
+ * The literals `True` and `False` are equal to `1` and `0` respectively. Logical operators (`==`, `and`, `not`, etc.) return either of these literals. When checking if `True`, anything not `0` will evaluate as `True`. Only `0` evaluates as `False`
+ 
 ### Runtime Errors
 
 Runtime errors result in the remainder of the _line_ (not statement) being skipped. Any effects up to the error are kept. Diagnosis recommended.
